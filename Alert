@@ -1,0 +1,45 @@
+package selenium;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class alertdemo {
+    public static void main(String[] args) throws InterruptedException {
+
+
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://demo.automationtesting.in/Alerts.html");
+
+
+
+
+////        //alert with ok
+//
+//
+//        driver.findElement(By.xpath("//a[text()=Alert with OK ]")).click();
+//        driver.findElement((By.xpath("//button[@onclick=alertbox()]"))).click();
+//        driver.findElement(By.id("OKTab")).click();
+//        driver.switchTo().alert().accept();
+//        Thread.sleep(3000);
+
+        //alert with okay & Cancel
+
+//        driver.findElement(By.xpath("//a[text()='Alert with OK & Cancel ']")).click();
+//        driver.findElement((By.xpath("//button[text()='click the button to display a confirm box ']"))).click();
+//        driver.switchTo().alert().accept();
+//        //driver.switchTo().alert().dismiss();
+
+//        alert with textbox
+        driver.findElement(By.xpath("//a[text()='Alert with Textbox ']")).click();
+        driver.findElement((By.xpath("//button[@class='btn btn-info']"))).click();
+        Alert at =driver.switchTo().alert();
+        driver.switchTo().alert().sendKeys("Selenim");
+        driver.switchTo().alert().accept();
+        //at.dismiss();
+
+
+    }
+}
