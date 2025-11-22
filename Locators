@@ -1,0 +1,44 @@
+package selenium;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class locatorsdemo {
+
+    public static void main(String[] args) {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://www.facebook.com/");
+        driver.manage().window().maximize();
+
+        //Id Locators
+       //email
+        driver.findElement(By.id("email")).sendKeys("abc@gmail.com");
+//
+//        //password
+        driver.findElement(By.id("pass")).sendKeys("abc123");
+
+        //name locators
+        //email
+        driver.findElement(By.name("email")).sendKeys("abc@gmail.com");
+
+        //password
+        driver.findElement(By.name("pass")).sendKeys("abc123");
+
+
+        //Tagname
+         driver.findElement(By.tagName("button")).click();
+
+        //linkedtext locators
+
+          driver.findElement(By.linkText("Forgotten password?")).click();
+
+        //partial linked text
+
+        driver.findElement((By.partialLinkText("password"))).click();
+
+
+
+    }
+}
