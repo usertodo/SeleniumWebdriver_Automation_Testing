@@ -1,0 +1,44 @@
+package selenium;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+import java.util.function.Function;
+
+public class fluentwaitdemo {
+    public static void main(String[] args) {
+
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.google.com/");
+        driver.manage().window().maximize();
+
+
+        driver.findElement(By.name("q")).sendKeys("selenium");
+        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+
+
+
+//        Wait<WebDriver> wait =new fluentwaitdemo <WebDriver>(driver)
+//                .withtimeout(java.time.Duration.ofSeconds(50))
+//                .pollingevery(java.time.Duration.ofSeconds(5))
+//                .ignoring(NoSuchElementException.class);
+
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(java.time.Duration.ofSeconds(50))
+                .pollingEvery(java.time.Duration.ofSeconds(5))
+                .ignoring(NoSuchElementException.class);
+
+
+        WebElement ele =wait.until(new Function<WebDriver,WebElement>(){
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(By.xpath("//a[text()='WebDriver']"));
+            }
+        });
+
+        ele.click();
+
+    }
+}
