@@ -1,0 +1,51 @@
+package selenium;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class keyactiondemo {
+    public static void main(String[] args) {
+
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://text-compare.com/");
+        driver.manage().window().maximize();
+
+        WebElement input1= driver.findElement(By.id("inputText1"));
+        input1.sendKeys("Welcome to selenium");
+
+        Actions ac=new Actions(driver);
+
+
+        //ctr+A
+        ac.keyDown(Keys.CONTROL);
+        ac.sendKeys("a");
+        ac.keyUp(Keys.CONTROL);
+        ac.perform();
+
+
+
+        //ctr +c
+        ac.keyDown(Keys.CONTROL);
+        ac.sendKeys("c");
+        ac.keyUp(Keys.CONTROL);
+        ac.perform();
+
+        //tab
+        ac.sendKeys(Keys.TAB).perform();
+
+
+        //ctrv
+
+        ac.keyDown(Keys.CONTROL);
+        ac.sendKeys("v");
+        ac.keyUp(Keys.CONTROL);
+        ac.perform();
+
+
+    }
+}
