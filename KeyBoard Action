@@ -1,0 +1,42 @@
+package selenium;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class keyboardactiondemo {
+    public static void main(String[] args) throws InterruptedException {
+
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/key_presses");
+        driver.manage().window().maximize();
+
+
+
+        Actions ac=new Actions(driver);
+
+        ac.sendKeys(Keys.ALT).perform();
+        Thread.sleep(3000);
+
+        ac.sendKeys(Keys.SHIFT).perform();
+        Thread.sleep(3000);
+
+        ac.sendKeys(Keys.F9).perform();
+        Thread.sleep(3000);
+
+        ac.sendKeys(Keys.NUMPAD5).perform();
+        Thread.sleep(3000);
+
+        ac.sendKeys(Keys.ESCAPE).perform();
+        Thread.sleep(3000);
+
+        ac.sendKeys(Keys.CONTROL).perform();
+        Thread.sleep(3000);
+
+        ac.sendKeys(Keys.NUMPAD6).perform();
+
+
+    }
+}
