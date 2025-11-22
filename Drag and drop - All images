@@ -1,0 +1,35 @@
+package selenium;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class imagealldragdrop {
+    public static void main(String[] args) {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
+        driver.manage().window().maximize();
+
+
+        driver.findElement(By.id("post-2669"));
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class=\"demo-frame\"]")));
+
+
+        WebElement img1= driver.findElement(By.xpath("//li[1]//img"));
+        WebElement img2= driver.findElement(By.xpath("//li[2]//img"));
+        WebElement img3= driver.findElement(By.xpath("//li[3]//img"));
+        WebElement img4= driver.findElement(By.xpath("//li[4]/img"));
+
+
+        WebElement trash= driver.findElement(By.id("trash"));
+        Actions ac=new Actions(driver);
+        ac.dragAndDrop(img1,trash).perform();
+        ac.dragAndDrop(img2,trash).perform();
+        ac.dragAndDrop(img3,trash).perform();
+        ac.dragAndDrop(img4,trash).perform();
+    }
+}
