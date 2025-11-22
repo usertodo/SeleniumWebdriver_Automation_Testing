@@ -1,0 +1,32 @@
+package selenium;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class xpathlocator {
+    public static void main(String[] args) {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver =new ChromeDriver();
+        driver.get("https://www.facebook.com/");
+        driver.manage().window().maximize();
+
+        //Absolute xpath
+        driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[2]/div/div/form/div/div/input")).sendKeys("Pqr123@gmail.com");
+        //driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div[2]/div/div/form/div/div/div/input ")).sendKeys("pqr1234");
+
+
+        //relative xpath
+
+        //1.Email
+       //driver.findElement(By.xpath("//input[@name=\"email\"]")).sendKeys("Mno123@gmail.com");
+
+        //2.Password
+        //driver.findElement(By.xpath("//input[@name=\"pass\"]")).sendKeys("mno1234");
+
+
+       //3.Login Button
+       // driver.findElement(By.xpath("//input[@name=\"login\"]")).click();
+    }
+}
