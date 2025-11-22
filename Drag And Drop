@@ -1,0 +1,46 @@
+package selenium;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class dragdropdemo {
+
+    public static void main(String[] args) {
+
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver=new ChromeDriver();
+        driver.get("https://www.globalsqa.com/demo-site/draganddrop/");
+        driver.manage().window().maximize();
+
+
+        driver.findElement(By.id("post-2669"));
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class=\"demo-frame\"]")));
+
+//        //1.high tatras
+//        driver.findElement(By.xpath("//img[@src='images/high_tatras_min.jpg']")).click();
+//         WebElement drag=driver.findElement((By.xpath("//h5[text()='High Tatras']")));
+//
+//        //2.high tatras2
+//        driver.findElement(By.xpath("//img[@src='images/high_tatras2_min.jpg']")).click();
+//         WebElement drag=driver.findElement((By.xpath("//h5[text()='High Tatras 2']")));
+//
+//        //3.high tatras 3
+//        driver.findElement(By.xpath("//img[@src='images/high_tatras3_min.jpg']")).click();
+//        WebElement drag=driver.findElement((By.xpath("//h5[text()='High Tatras 3']")));
+//
+//        //4.high tatras 4
+//        driver.findElement(By.xpath("//img[@src='images/high_tatras4_min.jpg']")).click();
+//        WebElement drag=driver.findElement((By.xpath("//h5[text()='High Tatras 4']")));
+//
+//        WebElement trash= driver.findElement(By.xpath("//span[text()='Trash']"));
+//
+//        Actions ac=new Actions(driver);
+//        ac.dragAndDrop(drag,trash).perform();
+
+    }
+}
+
+
