@@ -1,0 +1,40 @@
+package selenium;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class iframewithaniframe {
+    public static void main(String[] args) {
+        WebDriverManager.chromedriver().setup();
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://demo.automationtesting.in/Frames.html");
+        driver.manage().window().maximize();
+
+        //whole nested iframe to go that path
+        driver.findElement(By.xpath("//a[text()='Iframe with in an Iframe']")).click();
+
+         //index through xpath
+//        driver.switchTo().frame(1);
+//        System.out.println("entered into nested frame");
+//
+//        driver.switchTo().frame(0);
+//        System.out.println("entered into iframe");
+//        WebElement inputbox=driver.findElement((By.xpath("//input[@type='text']")));
+//        inputbox.sendKeys("Welcome All");
+//
+
+        //xpath through findout frames
+         //1.nested iframe
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='MultipleFrames.html']")));
+
+        //2.iframe
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='SingleFrame.html']")));
+        WebElement inputbox=driver.findElement((By.xpath("//input[@type='text']")));
+        inputbox.sendKeys("Welcome All");
+    }
+
+}
+
